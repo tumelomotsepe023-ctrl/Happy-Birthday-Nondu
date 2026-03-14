@@ -73,4 +73,130 @@ button:hover {
 
 .gallery img {
   width: 150px;
-  height: 150px
+  height: 150px;
+  object-fit: cover;
+  margin: 10px;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+/* SURPRISE MESSAGE */
+#secret {
+  display: none;
+  font-size: 28px;
+  margin-top: 30px;
+  font-weight: bold;
+  animation: pop 0.5s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* FLOATING HEARTS */
+.heart {
+  position: absolute;
+  color: #f5f5f5;
+  font-size: 18px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS SCRIPT -->
+<script>
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerText = '❤️';
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.fontSize = (15 + Math.random() * 25) + 'px';
+  heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 7000);
+}
+setInterval(createHeart, 600);
+</script>
+
+<!-- LANDING SECTION -->
+<section>
+<h1>Happy Birthday Nondu ❤️</h1>
+<p>
+Hi my love!<br>
+I created this special website just for you.<br>
+A place to celebrate you, our memories, and everything we share.
+</p>
+<button onclick="showMessage()">🎁 Click for Your Surprise 🎁</button>
+<div id="secret">🎉 HAPPY BIRTHDAY NONDU! ❤️</div>
+</section>
+
+<!-- OUR STORY -->
+<section>
+<h2>Our Story ✨</h2>
+<p>
+Every great story starts with a moment that changes everything.<br>
+A smile, a laugh, a look that sparks forever.<br>
+I wouldn't trade a single second of our journey together.
+</p>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section>
+<h2>Our Memories 📸</h2>
+<div class="gallery">
+  <img src="photo1.jpg" alt="Memory 1">
+  <img src="photo2.jpg" alt="Memory 2">
+  <img src="photo3.jpg" alt="Memory 3">
+</div>
+<p>Some of my favorite memories with you 💖</p>
+</section>
+
+<!-- FUTURE -->
+<section>
+<h2>The Future 🌍</h2>
+<p>
+I look forward to all the adventures we haven’t lived yet.<br>
+The dreams, the laughter, the life we’ll build together.<br>
+The best part of our story is still ahead.
+</p>
+</section>
+
+<!-- ALWAYS REMEMBER -->
+<section>
+<h2>Always Remember ❤️</h2>
+<p>
+If you ever feel down or wonder if someone truly cares…<br>
+Come back here and remember:<br>
+<b>Tumelo loves you, always.</b>
+</p>
+</section>
+
+<!-- SCRIPT -->
+<script>
+function showMessage() {
+  document.getElementById("secret").style.display = "block";
+}
+
+// Optional: Add background music
+// var audio = new Audio('love-song.mp3'); // Add your song
+// audio.loop = true;
+// audio.volume = 0.2;
+// audio.play(); // Uncomment to autoplay
+</script>
+
+</body>
+</html>
