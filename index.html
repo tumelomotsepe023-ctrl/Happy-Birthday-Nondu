@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Nondu ❤️</title>
 
-<!-- Luxury Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* GLOBAL STYLES */
@@ -14,39 +14,36 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background: #111;
+  background: linear-gradient(135deg, #111 0%, #222 100%);
   color: #f5f5f5;
   text-align: center;
   overflow-x: hidden;
+}
+
+section {
+  padding: 80px 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
 }
 
 /* HEADINGS */
 h1, h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
+  letter-spacing: 1px;
 }
 
-h1 { font-size: 36px; margin-bottom: 15px; animation-delay: 0.3s; }
-h2 { font-size: 28px; margin-top: 50px; animation-delay: 0.5s; }
+h1 { font-size: 42px; margin-bottom: 20px; }
+h2 { font-size: 32px; margin-bottom: 20px; }
 
 /* PARAGRAPHS */
 p {
   font-size: 18px;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
-  color: #ddd;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-
-/* ANIMATION */
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 auto 20px auto;
+  color: #ccc;
 }
 
 /* BUTTON */
@@ -54,16 +51,16 @@ button {
   background: #f5f5f5;
   color: #111;
   border: 2px solid #f5f5f5;
-  padding: 12px 28px;
+  padding: 15px 32px;
   font-size: 18px;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
   margin-top: 20px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background: #111;
+  background: transparent;
   color: #f5f5f5;
   border-color: #f5f5f5;
 }
@@ -73,7 +70,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .gallery img {
@@ -81,60 +78,61 @@ button:hover {
   height: 150px;
   object-fit: cover;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   filter: grayscale(100%);
-  transition: transform 0.3s, filter 0.3s;
+  transition: all 0.5s ease;
 }
 
 .gallery img:hover {
-  transform: scale(1.1);
   filter: grayscale(0%);
+  transform: scale(1.1);
 }
 
 /* SURPRISE MESSAGE */
 #secret {
   display: none;
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: 700;
   margin-top: 30px;
-  font-weight: bold;
   animation: pop 0.5s ease-in-out;
 }
 
 @keyframes pop {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  0% { transform: scale(0); opacity:0; }
+  100% { transform: scale(1); opacity:1; }
 }
 
 /* FLOATING HEARTS */
 .heart {
   position: absolute;
   color: #f5f5f5;
-  font-size: 18px;
+  font-size: 20px;
   animation: floatUp linear infinite;
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+  0% { transform: translateY(0) scale(1); opacity:1; }
+  100% { transform: translateY(-700px) scale(1.5); opacity:0; }
 }
 
 /* DAYS TOGETHER COUNTER */
 #daysTogether {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 15px;
   color: #f5f5f5;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-  animation-delay: 0.7s;
+}
+
+/* SCROLL ANIMATION */
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
 }
 </style>
 </head>
-
 <body>
 
-<!-- FLOATING HEARTS SCRIPT -->
+<!-- FLOATING HEARTS -->
 <script>
 function createHeart() {
   const heart = document.createElement('div');
@@ -146,17 +144,14 @@ function createHeart() {
   document.body.appendChild(heart);
   setTimeout(() => { heart.remove(); }, 7000);
 }
-setInterval(createHeart, 600);
+setInterval(createHeart, 500);
 </script>
 
-<!-- LANDING SECTION -->
-<section>
+<!-- HERO SECTION -->
+<section id="hero">
 <h1>Happy Birthday Nondu ❤️</h1>
-<p>
-Hi my love! I created this special website just for you.<br>
-A place to celebrate you, our memories, and everything we share.
-</p>
-<button onclick="showMessage()">🎁 Click for Your Surprise 🎁</button>
+<p>A special place to celebrate you and our journey together.</p>
+<button onclick="showMessage()">🎁 Click for Surprise 🎁</button>
 <div id="secret">🎉 HAPPY BIRTHDAY NONDU! ❤️</div>
 <div id="daysTogether"></div>
 </section>
@@ -164,20 +159,18 @@ A place to celebrate you, our memories, and everything we share.
 <!-- OUR STORY -->
 <section>
 <h2>Our Story ✨</h2>
-<p>
-Every great story starts with a moment that changes everything.<br>
-A smile, a laugh, a look that sparks forever.<br>
-I wouldn't trade a single second of our journey together.
-</p>
+<p>Every great story starts with a moment that changes everything.  
+A smile, a laugh, a glance that sparks forever.  
+I wouldn’t trade a single second of our journey together.</p>
 </section>
 
 <!-- PHOTO GALLERY -->
 <section>
 <h2>Our Memories 📸</h2>
 <div class="gallery">
-  <img src="photo1.jpg" alt="Memory 1">
-  <img src="photo2.jpg" alt="Memory 2">
-  <img src="photo3.jpg" alt="Memory 3">
+<img src="photo1.jpg" alt="Memory 1">
+<img src="photo2.jpg" alt="Memory 2">
+<img src="photo3.jpg" alt="Memory 3">
 </div>
 <p>Some of my favorite memories with you 💖</p>
 </section>
@@ -185,21 +178,16 @@ I wouldn't trade a single second of our journey together.
 <!-- FUTURE -->
 <section>
 <h2>The Future 🌍</h2>
-<p>
-I look forward to all the adventures we haven’t lived yet.<br>
-The dreams, the laughter, the life we’ll build together.<br>
-The best part of our story is still ahead.
-</p>
+<p>I look forward to all the adventures we haven’t lived yet.  
+The dreams, the laughter, the life we’ll build together.  
+The best part of our story is still ahead.</p>
 </section>
 
 <!-- ALWAYS REMEMBER -->
 <section>
 <h2>Always Remember ❤️</h2>
-<p>
-If you ever feel down or wonder if someone truly cares…<br>
-Come back here and remember:<br>
-<b>Tumelo loves you, always.</b>
-</p>
+<p>If you ever feel down or wonder if someone truly cares…  
+Come back here and remember: <b>Tumelo loves you, always.</b></p>
 </section>
 
 <!-- SCRIPT -->
@@ -214,16 +202,28 @@ function updateDaysTogether() {
   const startDate = new Date('2025-02-16T00:00:00');
   const today = new Date();
   const diffTime = today - startDate;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const diffDays = Math.floor(diffTime / (1000*60*60*24));
   document.getElementById('daysTogether').innerText = `Days we've been together: ${diffDays}`;
 }
 updateDaysTogether();
 
+// SCROLL ANIMATION
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < triggerBottom){
+      section.classList.add('visible');
+    }
+  });
+});
+
 // OPTIONAL BACKGROUND MUSIC
-// var audio = new Audio('love-song.mp3'); // Add your mp3
+// var audio = new Audio('love-song.mp3');
 // audio.loop = true;
 // audio.volume = 0.2;
-// audio.play(); // Uncomment to autoplay (mobile may require tap)
+// audio.play(); // uncomment to autoplay
 </script>
 
 </body>
