@@ -5,44 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Nondu ❤️</title>
 
-<!-- Fonts -->
+<!-- Luxury Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* GLOBAL STYLES */
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #111 0%, #222 100%);
+  background: #111;
   color: #f5f5f5;
-  text-align: center;
   overflow-x: hidden;
 }
 
 section {
-  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 50px 20px;
+  background-attachment: fixed;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(50px);
   transition: all 1s ease-out;
 }
 
-/* HEADINGS */
 h1, h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   letter-spacing: 1px;
+  margin-bottom: 20px;
 }
 
-h1 { font-size: 42px; margin-bottom: 20px; }
-h2 { font-size: 32px; margin-bottom: 20px; }
+h1 { font-size: 48px; }
+h2 { font-size: 36px; }
 
-/* PARAGRAPHS */
 p {
   font-size: 18px;
   line-height: 1.8;
   max-width: 650px;
-  margin: 0 auto 20px auto;
   color: #ccc;
 }
 
@@ -55,14 +59,12 @@ button {
   font-size: 18px;
   border-radius: 30px;
   cursor: pointer;
-  margin-top: 20px;
   transition: all 0.3s ease;
 }
 
 button:hover {
   background: transparent;
   color: #f5f5f5;
-  border-color: #f5f5f5;
 }
 
 /* GALLERY */
@@ -123,6 +125,13 @@ button:hover {
   color: #f5f5f5;
 }
 
+/* SECTION BACKGROUNDS FOR PARALLAX */
+#hero { background: linear-gradient(135deg, #111 0%, #222 100%); }
+#story { background: linear-gradient(135deg, #222 0%, #333 100%); }
+#gallery { background: linear-gradient(135deg, #111 0%, #222 100%); }
+#future { background: linear-gradient(135deg, #222 0%, #111 100%); }
+#remember { background: linear-gradient(135deg, #111 0%, #222 100%); }
+
 /* SCROLL ANIMATION */
 .visible {
   opacity: 1 !important;
@@ -130,6 +139,7 @@ button:hover {
 }
 </style>
 </head>
+
 <body>
 
 <!-- FLOATING HEARTS -->
@@ -147,25 +157,25 @@ function createHeart() {
 setInterval(createHeart, 500);
 </script>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section id="hero">
 <h1>Happy Birthday Nondu ❤️</h1>
-<p>A special place to celebrate you and our journey together.</p>
+<p>A premium website to celebrate you and our journey together.</p>
 <button onclick="showMessage()">🎁 Click for Surprise 🎁</button>
 <div id="secret">🎉 HAPPY BIRTHDAY NONDU! ❤️</div>
 <div id="daysTogether"></div>
 </section>
 
 <!-- OUR STORY -->
-<section>
+<section id="story">
 <h2>Our Story ✨</h2>
 <p>Every great story starts with a moment that changes everything.  
 A smile, a laugh, a glance that sparks forever.  
 I wouldn’t trade a single second of our journey together.</p>
 </section>
 
-<!-- PHOTO GALLERY -->
-<section>
+<!-- GALLERY -->
+<section id="gallery">
 <h2>Our Memories 📸</h2>
 <div class="gallery">
 <img src="photo1.jpg" alt="Memory 1">
@@ -176,7 +186,7 @@ I wouldn’t trade a single second of our journey together.</p>
 </section>
 
 <!-- FUTURE -->
-<section>
+<section id="future">
 <h2>The Future 🌍</h2>
 <p>I look forward to all the adventures we haven’t lived yet.  
 The dreams, the laughter, the life we’ll build together.  
@@ -184,7 +194,7 @@ The best part of our story is still ahead.</p>
 </section>
 
 <!-- ALWAYS REMEMBER -->
-<section>
+<section id="remember">
 <h2>Always Remember ❤️</h2>
 <p>If you ever feel down or wonder if someone truly cares…  
 Come back here and remember: <b>Tumelo loves you, always.</b></p>
@@ -197,15 +207,18 @@ function showMessage() {
   document.getElementById("secret").style.display = "block";
 }
 
-// DAYS TOGETHER COUNTER
+// DAYS TOGETHER LIVE COUNTER
 function updateDaysTogether() {
   const startDate = new Date('2025-02-16T00:00:00');
-  const today = new Date();
-  const diffTime = today - startDate;
-  const diffDays = Math.floor(diffTime / (1000*60*60*24));
-  document.getElementById('daysTogether').innerText = `Days we've been together: ${diffDays}`;
+  const now = new Date();
+  const diff = now - startDate;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const minutes = Math.floor((diff / (1000*60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  document.getElementById('daysTogether').innerText = `Together for ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
-updateDaysTogether();
+setInterval(updateDaysTogether, 1000);
 
 // SCROLL ANIMATION
 const sections = document.querySelectorAll('section');
@@ -218,12 +231,6 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
-// OPTIONAL BACKGROUND MUSIC
-// var audio = new Audio('love-song.mp3');
-// audio.loop = true;
-// audio.volume = 0.2;
-// audio.play(); // uncomment to autoplay
 </script>
 
 </body>
