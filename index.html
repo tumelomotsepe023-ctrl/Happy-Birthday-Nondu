@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Nondu ❤️</title>
+<title>Happy Birthday My Sunshine ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@ body {
   overflow-x:hidden;
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 #intro {
   position:fixed;
   width:100%;
@@ -26,8 +26,8 @@ body {
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:9999;
   flex-direction:column;
+  z-index:9999;
   transition:1s ease;
 }
 
@@ -48,9 +48,7 @@ body {
 }
 
 /* MAIN CONTENT */
-#main {
-  display:none;
-}
+#main { display:none; }
 
 /* SECTIONS */
 .section {
@@ -65,7 +63,6 @@ body {
   background-attachment:fixed;
 }
 
-/* OVERLAY */
 .overlay {
   position:absolute;
   width:100%;
@@ -74,7 +71,6 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* CONTENT */
 .content {
   position:relative;
   z-index:2;
@@ -83,24 +79,11 @@ body {
   animation:fadeUp 1.5s ease;
 }
 
-/* TYPOGRAPHY */
-h1 {
-  font-family:'Playfair Display';
-  font-size:60px;
-}
+h1 { font-family:'Playfair Display'; font-size:60px; }
+h2 { font-family:'Playfair Display'; font-size:40px; margin-bottom:20px; }
+p { font-size:18px; color:#ccc; line-height:1.8; }
 
-h2 {
-  font-family:'Playfair Display';
-  font-size:40px;
-}
-
-p {
-  font-size:18px;
-  color:#ccc;
-  line-height:1.8;
-}
-
-/* BUTTON */
+/* BUTTONS */
 .btn {
   margin-top:25px;
   padding:14px 32px;
@@ -118,10 +101,7 @@ p {
 }
 
 /* COUNTER */
-#counter {
-  margin-top:20px;
-  font-size:22px;
-}
+#counter { margin-top:20px; font-size:22px; }
 
 /* GALLERY */
 .gallery {
@@ -135,17 +115,17 @@ p {
   width:200px;
   height:250px;
   object-fit:cover;
-  filter: grayscale(100%) brightness(0.8);
+  filter:grayscale(100%) brightness(0.8);
   transition:0.6s;
   border-radius:12px;
 }
 
 .gallery img:hover {
-  filter: grayscale(0%) brightness(1);
-  transform: scale(1.08);
+  filter:grayscale(0%) brightness(1);
+  transform:scale(1.08);
 }
 
-/* ANIMATION */
+/* ANIMATIONS */
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(40px); }
   to { opacity:1; transform:translateY(0); }
@@ -158,9 +138,7 @@ p {
   animation:float 6s linear infinite;
 }
 
-@keyframes float {
-  to { transform:translateY(-110vh); opacity:0; }
-}
+@keyframes float { to { transform:translateY(-110vh); opacity:0; } }
 
 /* MOBILE */
 @media(max-width:768px){
@@ -184,8 +162,11 @@ p {
 <section class="section" style="background-image:url('bg1.jpg')">
 <div class="overlay"></div>
 <div class="content">
-<h1>Happy Birthday Nondu ❤️</h1>
-<p>This is not just a website… it’s a piece of my heart for you.</p>
+<h1>Happy Birthday My Sunshine ❤️</h1>
+<p>
+To the Love of My Life, My Everything… today is all about celebrating **you**, the light that fills my days, the joy that fills my heart.  
+I hope this little surprise reminds you how deeply you are loved.
+</p>
 <div id="counter"></div>
 </div>
 </section>
@@ -196,25 +177,24 @@ p {
 <div class="content">
 <h2>Our Story</h2>
 <p>
-Some stories are written… ours was felt.  
-Every moment with you is something I would choose again and again.
+Every smile, every laugh, every small moment with you has become part of the beautiful story of us.  
+I wouldn’t trade a single second of it. You are, and will always be, my everything.
 </p>
 </div>
 </section>
 
-<!-- GALLERY -->
+<!-- CINEMATIC GALLERY -->
 <section class="section" style="background-image:url('bg3.jpg')">
 <div class="overlay"></div>
 <div class="content">
-<h2>A Glimpse of Us</h2>
-<p style="margin-bottom:20px;">Moments that mean everything.</p>
+<h2>A Glimpse of You, With a Little of Me</h2>
+<p style="margin-bottom:20px;">Moments we’ve shared… a reflection of us, our love, our laughter, our forever.</p>
 
 <div class="gallery">
 <img src="photo1.jpg">
 <img src="photo2.jpg">
 <img src="photo3.jpg">
 </div>
-
 </div>
 </section>
 
@@ -224,8 +204,8 @@ Every moment with you is something I would choose again and again.
 <div class="content">
 <h2>The Future</h2>
 <p>
-With you… I see peace, growth, love, and forever.  
-The best part of our story is still ahead.
+I look forward to all the adventures we haven’t lived yet.  
+With you, every tomorrow is brighter, every dream sweeter. My Sunshine, the best is yet to come.
 </p>
 </div>
 </section>
@@ -236,8 +216,8 @@ The best part of our story is still ahead.
 <div class="content">
 <h2>Always Remember</h2>
 <p>
-No matter where life takes us…  
-You will always have my heart.
+No matter where life takes us, the Love of My Life, my everything…  
+You will always have my heart. ❤️
 </p>
 </div>
 </section>
@@ -247,33 +227,30 @@ You will always have my heart.
 <script>
 // INTRO TRANSITION
 function startExperience(){
-  const intro = document.getElementById("intro");
-  const main = document.getElementById("main");
-
-  intro.style.opacity = "0";
+  const intro=document.getElementById("intro");
+  const main=document.getElementById("main");
+  intro.style.opacity="0";
   setTimeout(()=>{
-    intro.style.display = "none";
-    main.style.display = "block";
+    intro.style.display="none";
+    main.style.display="block";
   },1000);
 }
 
-// COUNTER
+// LIVE COUNTER
 function updateCounter(){
-  const start = new Date("2025-02-16T00:00:00");
-  const now = new Date();
-  const diff = now - start;
-
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff/(1000*60*60))%24);
-  const m = Math.floor((diff/(1000*60))%60);
-  const s = Math.floor((diff/1000)%60);
-
-  document.getElementById("counter").innerText =
-  `${d} Days ${h} Hours ${m} Minutes ${s} Seconds Together`;
+  const start=new Date("2025-02-16T00:00:00");
+  const now=new Date();
+  const diff=now-start;
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  const m=Math.floor((diff/(1000*60))%60);
+  const s=Math.floor((diff/1000)%60);
+  document.getElementById("counter").innerText=
+    `${d} Days ${h} Hours ${m} Minutes ${s} Seconds Together`;
 }
 setInterval(updateCounter,1000);
 
-// HEARTS
+// FLOATING HEARTS
 setInterval(()=>{
   const heart=document.createElement("div");
   heart.className="heart";
