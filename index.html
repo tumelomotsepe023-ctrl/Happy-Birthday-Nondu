@@ -47,7 +47,7 @@ body {
   color:#000;
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 #main { display:none; }
 
 /* SECTIONS */
@@ -61,7 +61,12 @@ body {
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
+  opacity:0;
+  transform: translateY(50px);
+  transition: all 1s ease;
 }
+
+.section.visible { opacity:1; transform:translateY(0); }
 
 .overlay {
   position:absolute;
@@ -76,7 +81,6 @@ body {
   z-index:2;
   max-width:800px;
   padding:20px;
-  animation:fadeUp 1.5s ease;
 }
 
 h1 { font-family:'Playfair Display'; font-size:60px; }
@@ -95,10 +99,7 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
   transition:0.4s;
 }
 
-.btn:hover {
-  background:#fff;
-  color:#000;
-}
+.btn:hover { background:#fff; color:#000; }
 
 /* COUNTER */
 #counter { margin-top:20px; font-size:22px; }
@@ -116,19 +117,15 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
   height:250px;
   object-fit:cover;
   filter:grayscale(100%) brightness(0.8);
-  transition:0.6s;
   border-radius:12px;
+  opacity:0;
+  transform: scale(0.9);
+  transition: all 1s ease;
 }
 
-.gallery img:hover {
-  filter:grayscale(0%) brightness(1);
-  transform:scale(1.08);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(40px); }
-  to { opacity:1; transform:translateY(0); }
+.gallery img.visible {
+  opacity:1;
+  transform:scale(1);
 }
 
 /* HEARTS */
@@ -147,10 +144,9 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
 }
 </style>
 </head>
-
 <body>
 
-<!-- INTRO SCREEN -->
+<!-- INTRO -->
 <div id="intro">
 <button onclick="startExperience()">🎁 Click for Surprise</button>
 </div>
@@ -163,10 +159,7 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
 <div class="overlay"></div>
 <div class="content">
 <h1>Happy Birthday My Sunshine ❤️</h1>
-<p>
-To the Love of My Life, My Everything… today is all about celebrating **you**, the light that fills my days, the joy that fills my heart.  
-I hope this little surprise reminds you how deeply you are loved.
-</p>
+<p>To the Love of My Life, My Everything… today is all about celebrating you, the light of my days.</p>
 <div id="counter"></div>
 </div>
 </section>
@@ -176,10 +169,7 @@ I hope this little surprise reminds you how deeply you are loved.
 <div class="overlay"></div>
 <div class="content">
 <h2>Our Story</h2>
-<p>
-Every smile, every laugh, every small moment with you has become part of the beautiful story of us.  
-I wouldn’t trade a single second of it. You are, and will always be, my everything.
-</p>
+<p>Every smile, every laugh, every small moment with you has become part of the beautiful story of us. I wouldn’t trade a single second of it.</p>
 </div>
 </section>
 
@@ -188,8 +178,7 @@ I wouldn’t trade a single second of it. You are, and will always be, my everyt
 <div class="overlay"></div>
 <div class="content">
 <h2>A Glimpse of You, With a Little of Me</h2>
-<p style="margin-bottom:20px;">Moments we’ve shared… a reflection of us, our love, our laughter, our forever.</p>
-
+<p>Moments we’ve shared… a reflection of us, our love, our laughter, our forever.</p>
 <div class="gallery">
 <img src="photo1.jpg">
 <img src="photo2.jpg">
@@ -203,10 +192,7 @@ I wouldn’t trade a single second of it. You are, and will always be, my everyt
 <div class="overlay"></div>
 <div class="content">
 <h2>The Future</h2>
-<p>
-I look forward to all the adventures we haven’t lived yet.  
-With you, every tomorrow is brighter, every dream sweeter. My Sunshine, the best is yet to come.
-</p>
+<p>With you, every tomorrow is brighter, every dream sweeter. My Sunshine, the best is yet to come.</p>
 </div>
 </section>
 
@@ -215,10 +201,7 @@ With you, every tomorrow is brighter, every dream sweeter. My Sunshine, the best
 <div class="overlay"></div>
 <div class="content">
 <h2>Always Remember</h2>
-<p>
-No matter where life takes us, the Love of My Life, my everything…  
-You will always have my heart. ❤️
-</p>
+<p>No matter where life takes us, the Love of My Life, my everything… You will always have my heart. ❤️</p>
 </div>
 </section>
 
@@ -233,10 +216,11 @@ function startExperience(){
   setTimeout(()=>{
     intro.style.display="none";
     main.style.display="block";
+    revealSections();
   },1000);
 }
 
-// LIVE COUNTER
+// COUNTER
 function updateCounter(){
   const start=new Date("2025-02-16T00:00:00");
   const now=new Date();
@@ -260,6 +244,22 @@ setInterval(()=>{
   setTimeout(()=>heart.remove(),6000);
 },400);
 
+// CINEMATIC SCROLL
+function revealSections(){
+  const sections=document.querySelectorAll(".section");
+  const galleryImgs=document.querySelectorAll(".gallery img");
+
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {threshold:0.3});
+
+  sections.forEach(sec=>observer.observe(sec));
+  galleryImgs.forEach(img=>observer.observe(img));
+}
 </script>
 
 </body>
