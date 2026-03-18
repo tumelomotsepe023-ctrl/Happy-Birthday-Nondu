@@ -42,10 +42,7 @@ body {
   transition:0.4s;
 }
 
-#intro button:hover {
-  background:#fff;
-  color:#000;
-}
+#intro button:hover { background:#fff; color:#000; }
 
 /* MAIN */
 #main { display:none; }
@@ -123,10 +120,7 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
   transition: all 1s ease;
 }
 
-.gallery img.visible {
-  opacity:1;
-  transform:scale(1);
-}
+.gallery img.visible { opacity:1; transform:scale(1); }
 
 /* HEARTS */
 .heart {
@@ -207,15 +201,22 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
 
 </div>
 
+<!-- SUBTLE BACKGROUND MUSIC -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
 <script>
-// INTRO TRANSITION
+// INTRO TRANSITION & MUSIC
 function startExperience(){
   const intro=document.getElementById("intro");
   const main=document.getElementById("main");
+  const music=document.getElementById("bgMusic");
+  
   intro.style.opacity="0";
   setTimeout(()=>{
     intro.style.display="none";
     main.style.display="block";
+    music.volume=0.05; // subtle
+    music.play();
     revealSections();
   },1000);
 }
