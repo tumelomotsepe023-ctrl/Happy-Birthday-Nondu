@@ -205,23 +205,34 @@ p { font-size:18px; color:#ccc; line-height:1.8; }
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
-// INTRO TRANSITION & MUSIC
+// INTRO TRANSITION & MUSIC (Mobile Compatible)
 function startExperience(){
   const intro=document.getElementById("intro");
   const main=document.getElementById("main");
   const music=document.getElementById("bgMusic");
-  
+
+  // Fade intro
   intro.style.opacity="0";
+
+  // After fade, show main & start music
   setTimeout(()=>{
     intro.style.display="none";
     main.style.display="block";
-    music.volume=0.05; // subtle
-    music.play();
+
+    // Play music after user interaction
+    const playPromise = music.play();
+    if (playPromise !== undefined) {
+      playPromise
+      .then(() => { music.volume=0.05; console.log("Music playing"); })
+      .catch(error => { console.log("Music blocked:", error); });
+    }
+
+    // Reveal sections
     revealSections();
   },1000);
 }
 
-// COUNTER
+// LIVE COUNTER
 function updateCounter(){
   const start=new Date("2025-02-16T00:00:00");
   const now=new Date();
